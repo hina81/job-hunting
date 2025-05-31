@@ -18,6 +18,7 @@ export const GET = async (req:Request, res:NextResponse) => {
 
         //後でuser情報を取得する処理を追加する
         const userId = "1"
+
         const companies = await prisma.company.findMany({
             where: {
                 userId: userId
@@ -30,6 +31,36 @@ export const GET = async (req:Request, res:NextResponse) => {
     }catch (error) {
         console.error("Error:",error)
         return NextResponse.json({error: "サーバーエラーが発生しました"},{status: 500})
+    }finally {
+        await prisma.$disconnect();
+    }
+}
+
+export const POST = async (req:Request, res:NextResponse) => {
+    try {
+        await main()
+        // const { name, userId } = await req.json()
+        const { name, url, logoUrl, notes} = {
+            name: "Test Company",
+            url: "https://example.com",
+            logoUrl: null,
+            notes: null
+        }
+        //後でuser情報を取得する処理を追加する
+        const userId = "1"
+
+        const company = await prisma.company.create({
+            data: {
+                name,
+                url,
+                logoUrl,
+                notes,
+                userId
+            }
+        })
+        return NextResponse.json({message: "success",data: company},{status: 200})
+    }catch (error) {
+        return NextResponse.json({message: "error", error},{status: 500})
     }finally {
         await prisma.$disconnect();
     }

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1",
+    "name": "aaa株式会社",
+    "nextStep": "面接",
+    "dueDate": "2025-05-10",
+    "tags": ["フロントエンド", "Webアプリ", "React"]
+  },
+  {
+    "id": "2",
+    "name": "bbbbb",
+    "nextStep": "書類選考",
+    "dueDate": "2025-05-15",
+    "tags": ["インフラ", "サーバー"]
+  },
+  {
+    "id": "3",
+    "name": "ccc株式会社",
+    "nextStep": null,
+    "dueDate": null,
+    "tags": ["バックエンド"]
+  },
+  {
+    "id": "4",
+    "name": "dddd",
+    "nextStep": "書類選考",
+    "dueDate": "2025-05-12",
+    "tags": ["データベース", "SQL"]
+  },
+  {
+    "id": "5",
+    "name": "ee",
+    "nextStep": null,
+    "dueDate": null,
+    "tags": ["React", "TypeScript"]
+  },
+  {
+    "id": "6",
+    "name": "ffff株式会社",
+    "nextStep": "面接",
+    "dueDate": "2025-05-08",
+    "tags": ["Ruby", "Rails"]
+  },
+  {
+    "id": "7",
+    "name": "ggg株式会社",
+    "dueDate": "2025-05-22",
+    "nextStep": "コーディングテスト",
+    "tags": ["フロントエンド"]
+  }
+]

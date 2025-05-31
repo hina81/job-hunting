@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="bg-white min-h-screen">
       <div className="bg-white border-b border-gray-200">
         <div className="flex items-center justify-between px-6 pt-2">
           <TabSwitcher

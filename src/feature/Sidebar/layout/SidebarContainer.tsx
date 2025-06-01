@@ -1,0 +1,33 @@
+"use client";
+
+import { BellDot } from "lucide-react";
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerClose,
+} from "@/components/ui/drawer";
+import EmailList from "../components/EmailList";
+
+export function SidebarContainer() {
+  return (
+    <Drawer direction="right">
+      <DrawerTrigger asChild>
+        <button className="rounded-lg p-2 text-cyan-500  hover:text-cyan-700 transition-colors duration-200 mr-10">
+          <BellDot />
+        </button>
+      </DrawerTrigger>
+      <DrawerContent className="h-full max-w-sm ml-auto ">
+        <DrawerHeader>
+          <DrawerTitle>新着メール通知</DrawerTitle>
+        </DrawerHeader>
+
+        <EmailList />
+
+        <DrawerClose className="absolute top-4 right-4" />
+      </DrawerContent>
+    </Drawer>
+  );
+}

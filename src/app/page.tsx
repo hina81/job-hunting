@@ -46,9 +46,9 @@ export default function Home() {
             activeView={activeView}
             onChangeView={handleChangeView}
           />
-          {/* <Button onClick={()=>{
+          <Button onClick={()=>{
             fetch("/api/companies",{method: "POST"})
-          }}>会社サンプル生成</Button> */}
+          }}>会社サンプル生成</Button>
         </div>
       </div>
 

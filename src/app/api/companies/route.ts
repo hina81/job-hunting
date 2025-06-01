@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient()
 
-export async function main() {
+async function main() {
     try {
         // Prisma Clientの初期化
         await prisma.$connect();
@@ -12,7 +12,7 @@ export async function main() {
     }
 }
 
-export const GET = async (req:Request, res:NextResponse) => {
+export const GET = async (req:Request) => {
     try {
         await main();
 
@@ -36,7 +36,7 @@ export const GET = async (req:Request, res:NextResponse) => {
     }
 }
 
-export const POST = async (req:Request, res:NextResponse) => {
+export const POST = async (req:Request) => {
     try {
         await main()
         // const { name, userId } = await req.json()

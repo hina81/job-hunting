@@ -1,0 +1,78 @@
+"use client"
+
+import { Button } from "@/components/ui/button";
+import { CircleUserRound } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
+import { authClient } from "@/lib/auth-client"
+import { useRouter } from "next/navigation";
+const UserIcon = () => {
+    const {data, isPending} = authClient.useSession()
+    const session = data
+    const [open, setOpen] = useState(false)
+    const router = useRouter()
+
+    const handleSignInWithGoogle = async () => {
+      await authClient.signIn.social(
+        {
+          provider: "google",
+          callbackURL: "/",
+          errorCallbackURL: "/",
+        },
+
+      )
+    }
+
+    const handleSignOut = async () => {
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push("/")
+          }
+        }
+      })
+      setOpen(false)
+    }
+
+
+
+
+
+
+    
+  return (
+    <>
+        <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="sm">
+            <CircleUserRound  />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-[200px]">
+          <DropdownMenuGroup>
+            {session ? (
+                <>
+                <DropdownMenuItem onClick={() => {}}>設定</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleSignOut}>サインアウト</DropdownMenuItem>
+                </>
+            ):(
+<DropdownMenuItem onClick={handleSignInWithGoogle}>ログイン</DropdownMenuItem>
+            )}
+
+
+            
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
+  );
+};
+
+export default UserIcon;
+

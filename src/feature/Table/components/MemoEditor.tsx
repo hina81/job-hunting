@@ -31,9 +31,10 @@ const MemoEditor = () => {
           <div className="flex justify-end">
             <button
               onClick={handleEdit}
-              className="mt-2 bg-blue-500 text-white px-4 py-1 rounded"
+              className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-3 rounded-md transition-colors flex items-center justify-center space-x-1"
             >
-              編集
+             
+              <span className="px-2">編集</span>
             </button>
           </div>
         </div>
@@ -47,15 +48,17 @@ const MemoEditor = () => {
           <div className="mt-2 flex justify-end space-x-2">
             <button
               onClick={handleSave}
-              className="bg-green-500 text-white px-4 py-1 rounded"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-medium py-2 px-3 rounded-md transition-colors flex items-center justify-center space-x-1"
             >
-              保存
+
+              <span className="px-2">保存</span>
             </button>
             <button
               onClick={handleCancel}
-              className="bg-gray-500 text-white px-4 py-1 rounded"
+              className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium py-2 px-3 rounded-md transition-colors flex items-center justify-center space-x-1"
             >
-              キャンセル
+
+              <span>キャンセル</span>
             </button>
           </div>
         </div>

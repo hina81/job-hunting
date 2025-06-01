@@ -5,10 +5,13 @@ export function useGetTasks(): { tasks: Task[] } {
   const [tasks, setTasks] = useState<Task[]>([]);
   useEffect(() => {
     (async () => {
-      const url = "/tasks.json";
+      // const url = "/tasks.json";
+      const url = "/api/companies"
       const response = await fetch(url);
-      const data: Task[] = await response.json();
-      setTasks(data);
+      const data = await response.json();
+      const tasks:Task[] = data.data
+      console.log("tasks:", tasks);
+      setTasks(tasks);
     })();
   }, []);
   return { tasks };

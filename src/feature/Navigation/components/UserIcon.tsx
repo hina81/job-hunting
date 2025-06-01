@@ -9,11 +9,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { authClient } from "@/lib/auth-client"
 import { useRouter } from "next/navigation";
 const UserIcon = () => {
     const {data, isPending} = authClient.useSession()
+    console.log(data)
     const session = data
     const [open, setOpen] = useState(false)
     const router = useRouter()

@@ -1,7 +1,9 @@
-import { PrismaClient } from "@/generated/prisma";
+import { prisma } from "@/app/api/prisma";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
-const prisma = new PrismaClient()
+
 
 async function main() {
     try {
@@ -15,19 +17,23 @@ async function main() {
 export const GET = async (req:Request) => {
     try {
         await main();
-
-        //後でuser情報を取得する処理を追加する
-        const userId = "1"
-
-        const companies = await prisma.company.findMany({
-            where: {
-                userId: userId
-            },
-            orderBy: {
-                createdAt: 'desc'
+        const session = await auth.api.getSession({headers: await headers()})
+        if (!session || !session.user) {
+            return NextResponse.json({message: "認証されていません"},{status: 401})
+        }
+        const userId = session.user.id;
+            const companies = await prisma.company.findMany({
+                where: {
+                    userId: userId
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                }
+            })
+            if (!companies || companies.length === 0) {
+                return NextResponse.json({message: "success",data: []},{status: 200})
             }
-        })
-        return NextResponse.json({message: "success",data: companies},{status: 200})
+            return NextResponse.json({message: "success",data: companies},{status: 200})
     }catch (error) {
         console.error("Error:",error)
         return NextResponse.json({error: "サーバーエラーが発生しました"},{status: 500})
@@ -39,7 +45,11 @@ export const GET = async (req:Request) => {
 export const POST = async (req:Request) => {
     try {
         await main()
-        // const { name, userId } = await req.json()
+        const session = await auth.api.getSession({headers: await headers()})
+        if (!session || !session.user) {
+            return NextResponse.json({message: "認証されていません"},{status: 401})
+        }
+        const userId = session.user.id;
         const { name, url, logoUrl, notes} = {
             name: "Test Company",
             url: "https://example.com",
@@ -47,7 +57,6 @@ export const POST = async (req:Request) => {
             notes: null
         }
         //後でuser情報を取得する処理を追加する
-        const userId = "1"
 
         const company = await prisma.company.create({
             data: {

@@ -1,3 +1,4 @@
+"use client";
 import { Task } from "@/types/types";
 
 type Props = {
@@ -17,12 +18,12 @@ export const TableRow = ({ task }: Props) => {
   };
 
   return (
-    <tr className="group hover:bg-gray-50 ml-6">
+    <>
       <td className="whitespace-nowrap px-6 py-4 pl-25">
         <div className="text-sm font-medium text-gray-900">{task.name}</div>
       </td>
       <td className="whitespace-nowrap px-6 py-4 pl-25 text-sm text-gray-500">
-        {task.nextStep || "—"}
+        {task.nextSchedule || "—"}
       </td>
       <td className="whitespace-nowrap px-6 py-4 pl-25 text-sm text-gray-500">
         {formatDate(task.dueDate) || "—"}
@@ -39,6 +40,6 @@ export const TableRow = ({ task }: Props) => {
           ))}
         </div>
       </td>
-    </tr>
+    </>
   );
 };

@@ -1,7 +1,7 @@
 export type Task = {
   id: string;
   name: string;
-  nextStep: string | null;
+  nextSchedule: string | null;
   dueDate: string | null;
   tags: string[];
 };

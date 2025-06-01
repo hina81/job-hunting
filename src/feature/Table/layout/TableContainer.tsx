@@ -10,7 +10,6 @@ import { Task } from "@/types/types";
 
 const TableContainer = () => {
   const { tasks } = useGetTasks();
-  console.log("tasks:", tasks);
 
   return (
     <div className="w-full border-collapse">

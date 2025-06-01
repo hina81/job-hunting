@@ -14,7 +14,6 @@ import { authClient } from "@/lib/auth-client"
 import { useRouter } from "next/navigation";
 const UserIcon = () => {
     const {data, isPending} = authClient.useSession()
-    console.log(data)
     const session = data
     const [open, setOpen] = useState(false)
     const router = useRouter()

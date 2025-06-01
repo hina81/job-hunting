@@ -10,7 +10,6 @@ export function useGetTasks(): { tasks: Task[] } {
       const response = await fetch(url);
       const data = await response.json();
       const tasks:Task[] = data.data
-      console.log("tasks:", tasks);
       setTasks(tasks);
     })();
   }, []);

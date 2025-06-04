@@ -8,6 +8,8 @@ import { Modal } from "../components/Modal";
 
 import { Task } from "@/types/types";
 
+import { Plus } from "lucide-react";
+
 const TableContainer = () => {
   const { tasks } = useGetTasks();
 

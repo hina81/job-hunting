@@ -35,7 +35,7 @@ const TabSwitcher = ({ views, activeView, onChangeView }: Props) => {
               transition-all duration-200
               ${
                 activeView === view.type
-                  ? "bg-blue-500 text-white border-gray-200"
+                  ? "bg-cyan-500 text-white border-gray-200"
                   : "text-gray-500 hover:bg-gray-50 hover:text-gray-600 border-gray-200"
               }
             `}

@@ -8,9 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { useState } from "react";
-import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client"
 import { useRouter } from "next/navigation";
 const UserIcon = () => {
   const { data, isPending } = authClient.useSession();

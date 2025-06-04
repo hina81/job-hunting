@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Calendar, Table } from "lucide-react";
 import TableView from "@/feature/Table/layout/TableContainer";
 import CalendarView from "@/feature/Calender/layout/CalenderContainer";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const views = [
@@ -45,6 +46,9 @@ export default function Home() {
             activeView={activeView}
             onChangeView={handleChangeView}
           />
+          <Button onClick={()=>{
+            fetch("/api/companies",{method: "POST"})
+          }}>会社サンプル生成</Button>
         </div>
       </div>
 

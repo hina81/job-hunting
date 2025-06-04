@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { authClient } from "@/lib/auth-client"
 import { useRouter } from "next/navigation";
 const UserIcon = () => {

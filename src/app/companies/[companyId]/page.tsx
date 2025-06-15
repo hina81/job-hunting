@@ -3,6 +3,7 @@ import { getCompany } from "@/features/companies/hooks/useCompanies";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Header from "@/features/navigation/components/Header";
+import RequireLogin from "@/components/RequireLogin";
 
 type PageProps = {
   params: Promise<{ companyId: string }>;
@@ -14,7 +15,7 @@ export default async function CompanyDetailPage({ params }: PageProps) {
     headers: await headers(),
   });
   if (!session) {
-    return <div>ログインが必要です。</div>;
+    return <RequireLogin />;
   }
   const companyDetail = await getCompany(companyId);
   return (

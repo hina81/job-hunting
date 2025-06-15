@@ -1,3 +1,4 @@
+import RequireLogin from "@/components/RequireLogin";
 import { getCompaniesList } from "@/features/companies/hooks/useCompanies";
 import ViewContainer from "@/features/companies/layout/ViewContainer";
 
@@ -9,7 +10,7 @@ export default async function Home() {
     headers: await headers(),
   });
   if (!session) {
-    return <div>ログインが必要です。</div>;
+    return <RequireLogin />;
   }
 
   const companies = await getCompaniesList();

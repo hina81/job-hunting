@@ -1,58 +1,21 @@
-"use client";
-import TabSwitcher from "@/feature/Navigation/components/TabSwitcher";
-import { ViewType } from "@/types/types";
-import { useState } from "react";
-import { Calendar, Table } from "lucide-react";
-import TableView from "@/feature/Table/layout/TableContainer";
-import CalendarView from "@/feature/Calender/layout/CalenderContainer";
-import { Button } from "@/components/ui/button";
+import { getCompaniesList } from "@/features/companies/hooks/useCompanies";
+import ViewContainer from "@/features/companies/layout/ViewContainer";
 
-export default function Home() {
-  const views = [
-    {
-      name: "Table",
-      type: "table" as ViewType,
-      icon: <Table size={16} />,
-    },
-    {
-      name: "Calendar",
-      type: "calendar" as ViewType,
-      icon: <Calendar size={16} />,
-    },
-  ];
-  const [activeView, setActiveView] = useState<ViewType>("table");
+import { auth } from "@/lib/auth"; // better-auth のインスタンス
+import { headers } from "next/headers";
 
-  const handleChangeView = (view: ViewType) => {
-    setActiveView(view);
-  };
+export default async function Home() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    return <div>ログインが必要です。</div>;
+  }
 
-  const renderContent = () => {
-    switch (activeView) {
-      case "table":
-        return <TableView />;
-      case "calendar":
-        return <CalendarView />;
-      default:
-        return <TableView />;
-    }
-  };
-
+  const companies = await getCompaniesList();
   return (
-    <div className="bg-white min-h-screen">
-      <div className="bg-white border-b border-gray-200">
-        <div className="flex items-center justify-between px-6 pt-2">
-          <TabSwitcher
-            views={views}
-            activeView={activeView}
-            onChangeView={handleChangeView}
-          />
-          <Button onClick={()=>{
-            fetch("/api/companies",{method: "POST"})
-          }}>会社サンプル生成</Button>
-        </div>
-      </div>
-
-      <div>{renderContent()}</div>
-    </div>
+    <main className="min-h-screen bg-gray-50">
+      <ViewContainer companies={companies} />
+    </main>
   );
 }

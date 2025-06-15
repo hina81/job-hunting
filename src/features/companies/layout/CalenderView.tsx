@@ -14,7 +14,7 @@ const CalendarView = () => (
         </div>
         <div className="grid grid-cols-7 gap-1">
           {Array.from({ length: 35 }, (_, i) => {
-            const date = i - 5; // 適当な日付計算
+            const date = i - 5;
             const isToday = date === 15;
             const hasEvent = [10, 15, 22].includes(date);
 

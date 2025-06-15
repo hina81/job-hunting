@@ -9,13 +9,13 @@ import {
   DrawerTitle,
   DrawerClose,
 } from "@/components/ui/drawer";
-import EmailList from "../components/EmailList";
+import EmailList from "./EmailList";
 
 export function SidebarContainer() {
   return (
     <Drawer direction="right">
       <DrawerTrigger asChild>
-        <button className="rounded-lg p-2 text-gray-500  hover:text-gray-700 transition-colors duration-200 mr-10">
+        <button className="rounded-lg p-2 text-gray-500  hover:text-gray-700 transition-colors duration-200 ">
           <BellDot />
         </button>
       </DrawerTrigger>

@@ -2,50 +2,50 @@
   {
     "id": "1",
     "name": "aaa株式会社",
-    "nextSchedule": "面接",
+    "task": "面接",
     "dueDate": "2025-05-10",
-    "tags": ["フロントエンド", "Webアプリ", "React"]
+    "result": "合格"
   },
   {
     "id": "2",
     "name": "bbbbb",
-    "nextSchedule": "書類選考",
+    "task": "書類選考",
     "dueDate": "2025-05-15",
-    "tags": ["インフラ", "サーバー"]
+    "result": "合格"
   },
   {
     "id": "3",
     "name": "ccc株式会社",
-    "nextSchedule": null,
+    "task": null,
     "dueDate": null,
-    "tags": ["バックエンド"]
+    "result": "合格"
   },
   {
     "id": "4",
     "name": "dddd",
-    "nextSchedule": "書類選考",
+    "task": "書類選考",
     "dueDate": "2025-05-12",
-    "tags": ["データベース", "SQL"]
+    "result": "合格"
   },
   {
     "id": "5",
     "name": "ee",
-    "nextSchedule": null,
+    "task": null,
     "dueDate": null,
-    "tags": ["React", "TypeScript"]
+    "result": "合格"
   },
   {
     "id": "6",
     "name": "ffff株式会社",
-    "nextSchedule": "面接",
+    "task": "面接",
     "dueDate": "2025-05-08",
-    "tags": ["Ruby", "Rails"]
+    "result": "合格"
   },
   {
     "id": "7",
     "name": "ggg株式会社",
+    "task": "コーディングテスト",
     "dueDate": "2025-05-22",
-    "nextSchedule": "コーディングテスト",
-    "tags": ["フロントエンド"]
+    "result": "合格"
   }
 ]

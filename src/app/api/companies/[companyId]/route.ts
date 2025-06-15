@@ -10,10 +10,11 @@ export async function GET(req: Request, context: any) {
       return NextResponse.json({ error: "認証が必要です" }, { status: 401 });
     }
 
-    const { companyId } = context.params;
+    const { companyId } = await context.params;
     const companyDetailData = await prisma.company.findUnique({
       where: {
         id: companyId,
+        userId: session.user.id,
       },
       include: {
         progresses: {

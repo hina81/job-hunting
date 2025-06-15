@@ -14,12 +14,10 @@ export async function GET(req: Request, context: any) {
     const companyDetailData = await prisma.company.findUnique({
       where: {
         id: companyId,
-        userId: session.user.id, // ユーザーIDによるフィルタリング
       },
       include: {
         progresses: {
           orderBy: { deadline: "asc" },
-          take: 1,
         },
       },
     });

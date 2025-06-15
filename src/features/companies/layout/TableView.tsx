@@ -21,7 +21,7 @@ const TableView = ({ companies }: TableViewProps) => {
             期日
           </div>
           <div className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-            結果
+            ステータス
           </div>
         </div>
 
@@ -44,12 +44,19 @@ const TableView = ({ companies }: TableViewProps) => {
                 </div>
                 <div className="px-4 py-3 border-r border-gray-200">
                   <div className="text-sm text-gray-700">
-                    {company.progresses[0]?.task || "—"}
+                    {company.progresses[company.progresses.length - 1]?.task ||
+                      "—"}
                   </div>
                 </div>
                 <div className="px-4 py-3 border-r border-gray-200">
                   <div className="text-sm text-gray-700">
-                    {company.progresses[0]?.deadline || "—"}
+                    {company.progresses[company.progresses.length - 1]?.deadline
+                      ? new Date(
+                          company.progresses[
+                            company.progresses.length - 1
+                          ].deadline
+                        ).toLocaleDateString()
+                      : "—"}
                   </div>
                 </div>
                 <div className="px-4 py-3 border-r border-gray-200">

@@ -24,9 +24,9 @@ export const Sidebar = ({ activeView, onViewChange }: SidebarProps) => {
     <div className="flex h-full w-60 flex-col bg-white shadow-sm z-10">
       <div className="flex items-center space-x-2 px-6 py-6">
         <div className="text-2xl font-light text-gray-400 tracking-wider">
-          A
+          i {/* アイコンいれる */}
         </div>
-        <div className="text-xs text-gray-300 font-light">app</div>
+        <div className="text-xs text-gray-300 font-light">JobHunting</div>
       </div>
 
       <div className="flex-grow overflow-y-auto px-4">

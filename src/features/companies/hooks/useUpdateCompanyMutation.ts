@@ -31,5 +31,34 @@ export const useUpdateCompanyMutation = () => {
     }
   };
 
-  return { updateCompanyTitle };
+  const updateCompanyNotes = async (
+    companyId: Company["id"],
+    notes: string,
+    updatedAt: Date = new Date()
+  ): Promise<void> => {
+    try {
+      const updateData: UpdateCompanyDTO = {
+        notes,
+        updatedAt,
+      };
+      const response = await fetch(`/api/companies/${companyId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateData),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(`APIエラー: ${error.message || response.status}`);
+      }
+      const result = await response.json();
+      return result.data;
+    } catch (error) {
+      console.error("企業メモの更新に失敗しました：", error);
+      throw error;
+    }
+  };
+
+  return { updateCompanyTitle, updateCompanyNotes };
 };

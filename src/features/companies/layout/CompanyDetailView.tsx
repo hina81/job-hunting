@@ -66,7 +66,7 @@ export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
 
           <section>
             <h2 className="text-lg font-semibold mb-4">メモ</h2>
-            <MemoEditor />
+            <MemoEditor companyId={company.id} initialMemo={company.notes} />
           </section>
         </div>
       </div>

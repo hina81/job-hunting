@@ -1,5 +1,5 @@
 import { CompanyDetailView } from "@/features/companies/layout/CompanyDetailView";
-import { getCompany } from "@/features/companies/hooks/useCompanies";
+import { getCompanyById } from "@/features/companies/hooks/useCompanyById";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Header from "@/features/navigation/components/Header";
@@ -17,7 +17,7 @@ export default async function CompanyDetailPage({ params }: PageProps) {
   if (!session) {
     return <RequireLogin />;
   }
-  const companyDetail = await getCompany(companyId);
+  const companyDetail = await getCompanyById(companyId);
   return (
     <>
       <Header />

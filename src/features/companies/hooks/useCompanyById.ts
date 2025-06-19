@@ -1,12 +1,11 @@
 import { headers } from "next/headers";
 
-export async function getCompanies() {
+export async function getCompanyById(id: string) {
   try {
     const baseUrl =
       process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
-    const apiUrl = `${baseUrl}/api/companies`;
+    const apiUrl = `${baseUrl}/api/companies/${id}`;
     const header = await headers();
-
     const response = await fetch(apiUrl, {
       method: "GET",
       cache: "no-store",
@@ -20,7 +19,7 @@ export async function getCompanies() {
     const json = await response.json();
     return json.data;
   } catch (error) {
-    console.error("Error fetching companies:", error);
+    console.error("Error fetching company:", error);
     throw error;
   }
 }

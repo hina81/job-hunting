@@ -1,5 +1,5 @@
 import RequireLogin from "@/components/RequireLogin";
-import { getCompaniesList } from "@/features/companies/hooks/useCompanies";
+import { getCompanies } from "@/features/companies/hooks/useCompanies";
 import ViewContainer from "@/features/companies/layout/ViewContainer";
 
 import { auth } from "@/lib/auth"; // better-auth のインスタンス
@@ -13,7 +13,7 @@ export default async function Home() {
     return <RequireLogin />;
   }
 
-  const companies = await getCompaniesList();
+  const companies = await getCompanies();
   return (
     <main className="min-h-screen bg-gray-50">
       <ViewContainer companies={companies} />

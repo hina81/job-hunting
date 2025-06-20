@@ -33,7 +33,7 @@ export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
       <div className="max-w-4xl mx-auto p-6">
         <div className="flex items-center justify-between mb-4">
           <EditTitle value={name} onSave={handleTitleSave} />
-          <Button variant="outline" onClick={() => router.back()}>
+          <Button variant="outline" onClick={() => router.push("/")}>
             戻る
           </Button>
         </div>

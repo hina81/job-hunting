@@ -5,3 +5,11 @@ export type UpdateCompanyDTO = {
   notes?: string;
   updatedAt: Date;
 };
+
+export type CreateCompanyDTO = {
+  name: string;
+  url?: string;
+  notes?: string;
+  status?: string;
+  createdAt: Date;
+};

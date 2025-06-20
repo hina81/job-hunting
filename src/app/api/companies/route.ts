@@ -1,5 +1,6 @@
 import { prisma } from "@/app/api/prisma";
 import { auth } from "@/lib/auth";
+import { CreateCompanyDTO } from "@/types/dtos";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -66,18 +67,15 @@ export const POST = async (req: Request) => {
       );
     }
     const userId = session.user.id;
-    const { name, url, notes } = {
-      name: "Test Company",
-      url: "https://example.com",
-      notes: null,
-    };
+    const body: CreateCompanyDTO = await req.json();
+
     //後でuser情報を取得する処理を追加する
 
     const company = await prisma.company.create({
       data: {
-        name,
-        url,
-        notes,
+        name: body.name,
+        url: body.url,
+        notes: body.notes,
         userId,
       },
     });

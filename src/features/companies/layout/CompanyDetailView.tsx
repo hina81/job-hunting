@@ -9,6 +9,7 @@ import MemoEditor from "../components/MemoEditor";
 import EditTitle from "../components/EditTitle";
 import { useState } from "react";
 import { useUpdateCompanyMutation } from "../hooks/useUpdateCompanyMutation";
+import CreateProgressForm from "../components/CreateProgressModal";
 
 type CompanyDetailViewProps = {
   company: Company;
@@ -62,6 +63,8 @@ export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
             <div>
               <HistoryList progresses={company.progresses} />
             </div>
+
+            <CreateProgressForm companyId={company.id} />
           </section>
 
           <section>

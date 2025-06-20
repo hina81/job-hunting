@@ -29,9 +29,9 @@ export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
   };
 
   return (
-    <div className="">
+    <div>
       <div className="max-w-4xl mx-auto p-6">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <EditTitle value={name} onSave={handleTitleSave} />
           <Button variant="outline" onClick={() => router.back()}>
             戻る

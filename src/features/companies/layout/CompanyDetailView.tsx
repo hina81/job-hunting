@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import { Company } from "@/types/types";
 import HistoryList from "../components/HistoryList";
 import MemoEditor from "../components/MemoEditor";
+import EditTitle from "../components/EditTitle";
+import { useState } from "react";
+import { useUpdateCompanyMutation } from "../hooks/useUpdateCompanyMutation";
 
 type CompanyDetailViewProps = {
   company: Company;
@@ -13,13 +16,24 @@ type CompanyDetailViewProps = {
 
 export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
   const router = useRouter();
+  const [name, setName] = useState(company.name);
+  const { updateCompanyTitle } = useUpdateCompanyMutation();
+
+  const handleTitleSave = async (newTitle: string) => {
+    setName(newTitle);
+    try {
+      await updateCompanyTitle(company.id, newTitle);
+    } catch (error) {
+      console.error("企業名の更新に失敗しました：", error);
+    }
+  };
 
   return (
-    <div className="">
+    <div>
       <div className="max-w-4xl mx-auto p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold">{company.name}</h1>
-          <Button variant="outline" onClick={() => router.back()}>
+        <div className="flex items-center justify-between mb-4">
+          <EditTitle value={name} onSave={handleTitleSave} />
+          <Button variant="outline" onClick={() => router.push("/")}>
             戻る
           </Button>
         </div>
@@ -52,7 +66,7 @@ export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
 
           <section>
             <h2 className="text-lg font-semibold mb-4">メモ</h2>
-            <MemoEditor />
+            <MemoEditor companyId={company.id} initialMemo={company.notes} />
           </section>
         </div>
       </div>

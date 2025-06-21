@@ -64,7 +64,7 @@ export const CompanyDetailView = ({ company }: CompanyDetailViewProps) => {
               <HistoryList progresses={company.progresses} />
             </div>
 
-            <CreateProgressForm companyId={company.id} />
+            <CreateProgressForm company={company} />
           </section>
 
           <section>

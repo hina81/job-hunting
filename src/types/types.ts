@@ -42,3 +42,28 @@ export type User = {
   companies: Company[];
   emailVerified: boolean;
 };
+
+export type CalendarEvent = {
+  summary: string;
+  description?: string;
+  start: {
+    dateTime: string;
+    timeZone: string;
+  };
+  end: {
+    dateTime: string;
+    timeZone: string;
+  };
+  location?: string;
+  attendees?: Array<{
+    email: string;
+    displayName?: string;
+  }>;
+};
+
+export type CalendarApiResponse = {
+  status: "success" | "error";
+  data?: any;
+  message?: string;
+  error?: string;
+};

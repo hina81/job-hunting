@@ -13,3 +13,9 @@ export type CreateCompanyDTO = {
   status?: string;
   createdAt: Date;
 };
+
+export type CreateProgressDTO = {
+  task: string;
+  deadline?: string;
+  createdAt?: string;
+};
